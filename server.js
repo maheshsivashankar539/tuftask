@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 const db=mysql.createConnection({
-  host: "database-4.c5ecgi4ucqf8.eu-north-1.rds.amazonaws.com",
+  host: "database-1.cbw80useg18t.ap-south-1.rds.amazonaws.com",
   port: "3306",
 user: "admin",
 password: "mahesh123awssql",
