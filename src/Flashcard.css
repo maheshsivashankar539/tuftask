@@ -1,0 +1,86 @@
+/* Flashcard.css */
+
+/* Apply to the whole page */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+
+.flashcard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+  text-align: center; /* Center text inside flashcard */
+  flex-wrap: wrap;
+}
+
+.flashcard:hover {
+  transform: scale(1.05);
+}
+
+.flashcard h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.flashcard p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.flashcard button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add margin to space out the button */
+}
+
+.flashcard button:hover {
+  background-color: #0056b3;
+}
+
+.flashcard input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 100%;
+  max-width: 300px;
+}
+
+.flashcard button.add {
+  background-color: #28a745;
+}
+
+.flashcard button.add:hover {
+  background-color: #218838;
+}
+.add{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; 
+}
