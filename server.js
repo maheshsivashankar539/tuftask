@@ -8,18 +8,38 @@ app.use(cors());
 
 app.use(express.json());
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'mahesh@123',
-  database: 'flashcard_db'
-});
+const db=mysql.createConnection({
+  host: "database-4.c5ecgi4ucqf8.eu-north-1.rds.amazonaws.com",
+  port: "3306",
+user: "admin",
+password: "mahesh123awssql",
+database: "tuftask",
+})
 
-db.connect((err)=>{
-  if(err){
-    throw err;
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err);
+    return;
   }
-  console.log("connected");
+  console.log('Connected to the AWS RDS MySQL database.');
+
+  // Create the flashcards table if it doesn't exist
+  const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS flashcards (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      description VARCHAR(255) NOT NULL,
+      link VARCHAR(255) NOT NULL,
+      timer INT NOT NULL
+    );
+  `;
+
+  db.query(createTableQuery, (err, result) => {
+    if (err) {
+      console.error('Error creating table:', err);
+    } else {
+      console.log('Flashcards table created or already exists.');
+    }
+  });
 });
 
 app.get('/api/flashcards', (req, res) => {
@@ -32,6 +52,7 @@ app.get('/api/flashcards', (req, res) => {
 app.post('/api/flashcards', (req, res) => {
   const { description, link, timer } = req.body;
   db.query('INSERT INTO flashcards (description, link, timer) VALUES (?, ?, ?)', [description, link, timer], (err) => {
+  console.log("working well");
     if (err) throw err;
     res.status(201).send('Flashcard added');
   });
