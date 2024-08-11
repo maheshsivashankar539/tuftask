@@ -43,7 +43,7 @@ const Flashcard = () => {
 
   const fetchFlashcards = async () => {
     try {
-      const response = await axios.get('https://tuftask-2-1gz4.onrender.com/api/flashcards');
+      const response = await axios.get('http://localhost:5000/api/flashcards');
       const sortedFlashcards = response.data.sort((a, b) => {
         return a.description.localeCompare(b.description);
       });
@@ -57,7 +57,7 @@ const Flashcard = () => {
     try {
       // Ensure URL has http:// or https://
       const formattedLink = link.startsWith('http://') || link.startsWith('https://') ? link : `https://${link}`;
-      await axios.post('https://tuftask-2-1gz4.onrender.com/api/flashcards', { description, link: formattedLink, timer });
+      await axios.post('http://localhost:5000/api/flashcards', { description, link: formattedLink, timer });
       fetchFlashcards();
     } catch (error) {
       console.error('Error adding flashcard:', error);
@@ -66,7 +66,7 @@ const Flashcard = () => {
 
   const deleteFlashcard = async (id) => {
     try {
-      await axios.delete(`https://tuftask-2-1gz4.onrender.com/api/flashcards/${id}`);
+      await axios.delete(`http://localhost:5000/api/flashcards/${id}`);
       fetchFlashcards();
     } catch (error) {
       console.error('Error deleting flashcard:', error);
