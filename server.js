@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production"){
+    require('dotenv').config();    
+}
+
 const express = require('express');
 const mysql = require('mysql2');
 const app = express();
@@ -9,11 +13,11 @@ app.use(cors());
 app.use(express.json());
 
 const db=mysql.createConnection({
-  host: "database-1.cbw80useg18t.ap-south-1.rds.amazonaws.com",
-  port: "3306",
-user: "admin",
-password: "mahesh123awssql",
-database: "tuftask",
+  host: process.env.db_host,
+  port: porcess.env.db_port,
+user: process.env.db_user,
+password: process.env.db_password,
+database: process.env.db,
 })
 
 db.connect((err) => {
